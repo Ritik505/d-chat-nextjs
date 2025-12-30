@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-900">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D-Chat | Decentralized Chat</title>
+    <!-- Tailwind via CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              gray: {
+                900: '#0D1117', // GitHub Dark Dimmed style
+                850: '#161B22',
+                800: '#21262D',
+                700: '#30363D',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* --- Light Mode Overrides --- */
+      /* These rules force the custom dark palette to invert when .light class is present */
+      
+      html.light body {
+        background-color: #F6F8FA !important;
+        color: #1F2937 !important;
+      }
+
+      /* Invert Backgrounds */
+      html.light .bg-gray-900 { background-color: #F6F8FA !important; }
+      html.light .bg-gray-850 { background-color: #FFFFFF !important; border-right-color: #E5E7EB !important; }
+      html.light .bg-gray-800 { background-color: #FFFFFF !important; border-color: #E5E7EB !important; }
+      html.light .bg-gray-700 { background-color: #F3F4F6 !important; border-color: #D1D5DB !important; }
+      
+      /* Invert Text Colors */
+      html.light .text-gray-200 { color: #1F2937 !important; }
+      html.light .text-gray-300 { color: #374151 !important; }
+      html.light .text-gray-400 { color: #6B7280 !important; }
+      html.light .text-gray-500 { color: #9CA3AF !important; }
+      
+      /* Specific text overrides */
+      html.light .text-white { color: #111827 !important; }
+      html.light .chat-bubble-sent { color: #ffffff !important; }
+      html.light .chat-bubble-sent .text-[10px] { color: rgba(255, 255, 255, 0.8) !important; }
+      
+      /* Exception: Keep button text white for primary actions */
+      html.light button.bg-indigo-600,
+      html.light .bg-indigo-600 .text-white,
+      html.light button[type="submit"] {
+          color: #ffffff !important;
+      }
+
+      /* Invert Borders */
+      html.light .border-gray-700 { border-color: #E5E7EB !important; }
+      html.light .border-gray-600 { border-color: #D1D5DB !important; }
+
+      /* Form Elements */
+      html.light input, html.light textarea {
+          background-color: #FFFFFF !important;
+          color: #111827 !important;
+          border-color: #D1D5DB !important;
+      }
+      html.light input::placeholder { color: #9CA3AF !important; }
+      
+      /* Hover States */
+      html.light .hover\:bg-gray-700:hover { background-color: #F3F4F6 !important; }
+      html.light .hover\:bg-gray-800:hover { background-color: #F3F4F6 !important; }
+      
+      /* Scrollbars */
+      html.light ::-webkit-scrollbar-track { background: #F1F1F1; }
+      html.light ::-webkit-scrollbar-thumb { background: #C1C1C1; }
+
+      /* Hide default browser password reveal button (Edge/IE) */
+      input::-ms-reveal,
+      input::-ms-clear {
+        display: none;
+      }
+    </style>
+    <!-- Gun.js and Crypto-JS via CDN for decentralized storage & encryption helpers -->
+    <script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+  </head>
+  <body class="h-full overflow-hidden text-gray-200 antialiased">
+    <div id="root" class="h-full w-full"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
