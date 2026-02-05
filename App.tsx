@@ -16,7 +16,7 @@ const App: React.FC = () => {
 
       if (savedUser && privKeyStr && pubKeyStr) {
         try {
-          // Use dynamic import for crypto service to avoid circular dependency issues if any
+ 
           const { importPrivKey, importPubKey } = await import('./services/cryptoService');
           
           const keys = {
@@ -39,11 +39,9 @@ const App: React.FC = () => {
     setCurrentUser(username);
     setUserKeys(keys);
     
-    // Persist session securely (in memory/sessionStorage only)
+    
     sessionStorage.setItem('currentUser', username);
-    // We need to export keys back to JWK to store in session storage
-    // Note: Storing keys in sessionStorage is convenience vs security tradeoff present in original app.
-    // In a production app, you might want to keep keys only in memory or IndexedDB non-exportable.
+    
     
     const saveKeys = async () => {
          const { exportKey } = await import('./services/cryptoService');
